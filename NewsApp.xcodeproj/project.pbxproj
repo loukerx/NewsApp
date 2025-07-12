@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		EFF6179D2E21F4C20089929F /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = EFF6179C2E21F4C20089929F /* GRDB */; };
-		EFF6179F2E21F4C20089929F /* GRDB-dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = EFF6179E2E21F4C20089929F /* GRDB-dynamic */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,15 +27,41 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		EFF617EE2E21FB500089929F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		EFF617542E21F1710089929F /* NewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFF617612E21F1720089929F /* NewsAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewsAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFF6176B2E21F1720089929F /* NewsAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewsAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		EFF617F32E2234400089929F /* Exceptions for "NewsApp" folder in "NewsAppTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Networking/MockNewsAPIService.swift,
+			);
+			target = EFF617602E21F1720089929F /* NewsAppTests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		EFF617562E21F1710089929F /* NewsApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				EFF617F32E2234400089929F /* Exceptions for "NewsApp" folder in "NewsAppTests" target */,
+			);
 			path = NewsApp;
 			sourceTree = "<group>";
 		};
@@ -58,7 +83,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFF6179D2E21F4C20089929F /* GRDB in Frameworks */,
-				EFF6179F2E21F4C20089929F /* GRDB-dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +133,7 @@
 				EFF617502E21F1710089929F /* Sources */,
 				EFF617512E21F1710089929F /* Frameworks */,
 				EFF617522E21F1710089929F /* Resources */,
+				EFF617EE2E21FB500089929F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -120,7 +145,6 @@
 			name = NewsApp;
 			packageProductDependencies = (
 				EFF6179C2E21F4C20089929F /* GRDB */,
-				EFF6179E2E21F4C20089929F /* GRDB-dynamic */,
 			);
 			productName = NewsApp;
 			productReference = EFF617542E21F1710089929F /* NewsApp.app */;
@@ -596,11 +620,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EFF6179B2E21F4C20089929F /* XCRemoteSwiftPackageReference "GRDB" */;
 			productName = GRDB;
-		};
-		EFF6179E2E21F4C20089929F /* GRDB-dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = EFF6179B2E21F4C20089929F /* XCRemoteSwiftPackageReference "GRDB" */;
-			productName = "GRDB-dynamic";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
