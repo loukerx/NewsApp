@@ -17,7 +17,6 @@ struct ContentTabView: View {
                     Label("Headlines", systemImage: "newspaper")
                 }
                 .environmentObject(sourcesViewModel)
-            
             SourcesView()
                 .tabItem {
                     Label("Sources", systemImage: "list.bullet")

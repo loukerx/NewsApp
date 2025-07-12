@@ -13,53 +13,51 @@ struct ArticleRowView: View {
     let onSave: () -> Void
     
     var body: some View {
-        HStack(spacing: 12) {
+        HStack(spacing: AppConstants.Layout.defaultSpacing) {
             // Thumbnail
             AsyncImage(url: URL(string: article.urlToImage ?? "")) { image in
                 image
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(width: 80, height: 80)
+                    .frame(width: AppConstants.Layout.thumbnailSize, height: AppConstants.Layout.thumbnailSize)
                     .clipped()
-                    .cornerRadius(8)
+                    .cornerRadius(AppConstants.Layout.cornerRadius)
             } placeholder: {
-                RoundedRectangle(cornerRadius: 8)
-                    .fill(Color.gray.opacity(0.3))
-                    .frame(width: 80, height: 80)
+                RoundedRectangle(cornerRadius: AppConstants.Layout.cornerRadius)
+                    .fill(Theme.Colors.placeholder)
+                    .frame(width: AppConstants.Layout.thumbnailSize, height: AppConstants.Layout.thumbnailSize)
             }
             
             // Content
-            VStack(alignment: .leading, spacing: 4) {
+            VStack(alignment: .leading, spacing: AppConstants.Layout.smallSpacing) {
                 Text(article.title)
-                    .font(.headline)
-                    .lineLimit(2)
-                    .foregroundColor(.primary)
+                    .font(Theme.Typography.headline)
+                    .foregroundColor(Theme.Colors.primary)
                 
                 if let description = article.description {
                     Text(description)
-                        .font(.caption)
-                        .lineLimit(2)
-                        .foregroundColor(.secondary)
+                        .font(Theme.Typography.caption)
+                        .foregroundColor(Theme.Colors.secondary)
                 }
                 
                 HStack {
                     if let author = article.author {
                         Text(author)
-                            .font(.caption2)
-                            .foregroundColor(.secondary)
+                            .font(Theme.Typography.caption2)
+                            .foregroundColor(Theme.Colors.secondary)
                     }
                     
                     Spacer()
                     
                     Button(action: onSave) {
-                        Image(systemName: isSaved ? "bookmark.fill" : "bookmark")
-                            .foregroundColor(isSaved ? .blue : .gray)
+                        Image(systemName: isSaved ? AppConstants.Images.bookmarkFill : AppConstants.Images.bookmark)
+                            .foregroundColor(isSaved ? Theme.Colors.accent : .gray)
                     }
                     .buttonStyle(PlainButtonStyle())
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .padding(.vertical, 8)
+        .padding(.vertical, AppConstants.Layout.smallPadding)
     }
 }

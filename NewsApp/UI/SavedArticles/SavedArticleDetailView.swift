@@ -15,7 +15,7 @@ struct SavedArticleDetailView: View {
             WebView(url: url)
                 .navigationBarTitleDisplayMode(.inline)
         } else {
-            Text("Invalid URL")
+            Text(AppConstants.Strings.invalidURL)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }

@@ -16,32 +16,19 @@ struct HeadlinesView: View {
         NavigationView {
             Group {
                 if sourcesViewModel.selectedSources.isEmpty {
-                    VStack(spacing: 20) {
-                        Image(systemName: "newspaper")
-                            .font(.system(size: 60))
-                            .foregroundColor(.gray)
-                        Text("No sources selected")
-                            .font(.headline)
-                        Text("Go to Sources tab to select news sources")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    EmptyStateView(
+                        icon: AppConstants.Images.newspaper,
+                        title: AppConstants.Strings.noSourcesSelected,
+                        subtitle: AppConstants.Strings.selectSourcesPrompt
+                    )
                 } else if viewModel.isLoading {
-                    ProgressView("Loading headlines...")
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    LoadingView(message: AppConstants.Strings.loadingHeadlines)
                 } else if viewModel.articles.isEmpty {
-                    VStack(spacing: 20) {
-                        Image(systemName: "doc.text")
-                            .font(.system(size: 60))
-                            .foregroundColor(.gray)
-                        Text("No articles available")
-                            .font(.headline)
-                        Text("Try selecting different sources")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    EmptyStateView(
+                        icon: AppConstants.Images.documentText,
+                        title: AppConstants.Strings.noArticlesAvailable,
+                        subtitle: AppConstants.Strings.tryDifferentSources
+                    )
                 } else {
                     List(viewModel.articles) { article in
                         NavigationLink(destination: ArticleDetailView(article: article)) {
@@ -59,7 +46,7 @@ struct HeadlinesView: View {
                     .listStyle(PlainListStyle())
                 }
             }
-            .navigationTitle("Headlines")
+            .navigationTitle(AppConstants.Strings.headlinesTitle)
             .refreshable {
                 await viewModel.loadHeadlines(for: sourcesViewModel.selectedSources)
             }
