@@ -22,25 +22,23 @@ class HeadlinesViewModel: ObservableObject {
     @Published var savedArticleIDs: Set<String> = []
     var selectedSources: Set<String> = []
 
-    private let apiService: NewsAPIServiceProtocol
     private let storageManager = StorageManager.shared
+    private let repository: NewsRepositoryProtocol
     
-    init(apiService: NewsAPIServiceProtocol = NewsAPIService.shared) {
-        self.apiService = apiService
-        loadSelectedSources()
-        loadSavedArticleIds()
+    init(repository: NewsRepositoryProtocol = NewsRepository()) {
+        self.repository = repository
     }
     
     private func loadSelectedSources() {
         selectedSources = storageManager.loadSelectedSources()
     }
-
-    func reloadHeadlines() async {
+    func reloadHeadlines(forceFetch: Bool = false) async {
         loadSelectedSources()
-        await loadHeadlines(for: selectedSources)
+        loadSavedArticleIds()
+        await loadHeadlines(for: selectedSources, forceFetch: forceFetch)
     }
-    
-    func loadHeadlines(for sources: Set<String>) async {
+
+    func loadHeadlines(for sources: Set<String>, forceFetch: Bool) async {
         guard !sources.isEmpty else {
             state = .empty
             return
@@ -49,14 +47,14 @@ class HeadlinesViewModel: ObservableObject {
         state = .loading
         
         do {
-            let articles = try await apiService.fetchHeadlines(sources: Array(sources))
+            let articles = try await repository.fetchHeadlines(sources: Array(sources), forceFetch: forceFetch)
             if articles.isEmpty {
                 state = .empty
             } else {
                 state = .loaded(articles)
             }
         } catch {
-            state = .error("Failed to load headlines: \(error.localizedDescription)")
+            state = .error(AppConstants.Strings.networkErrorHeadlines)
         }
     }
 

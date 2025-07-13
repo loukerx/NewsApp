@@ -30,12 +30,15 @@ enum AppConstants {
         static let noArticlesAvailable = "No articles available"
         static let tryDifferentSources = "Try selecting different sources"
         static let errorTitle = "Network Error"
-        
+        static let networkErrorHeadlines = "Failed to load headlines, Please check your internet connection and try again."
+
         // Sources Tab
         static let sourcesTitle = "Sources"
         static let loadingSources = "Loading sources..."
         static let noSourcesAvailable = "No sources available"
-        
+        static let tryLater = "Try fetch the source later"
+        static let networkErrorSources = "Failed to load sources, Please check your internet connection and try again."
+
         // Saved Tab
         static let savedTitle = "Saved"
         static let noSavedArticles = "No saved articles"

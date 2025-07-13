@@ -10,30 +10,37 @@ import Combine
 
 @MainActor
 class SourcesViewModel: ObservableObject {
-    @Published var sources: [NewsSource] = []
+    enum SourcesState {
+        case loading
+        case loaded([NewsSource])
+        case empty
+        case error(String)
+    }
+
     @Published var selectedSources: Set<String> = []
-    @Published var isLoading = false
-    @Published var errorMessage: String?
-    
-    private let apiService: NewsAPIServiceProtocol
+    @Published var state: SourcesState = .loading
+
     private let storageManager = StorageManager.shared
+    private let repository: NewsRepositoryProtocol
     
-    init(apiService: NewsAPIServiceProtocol = NewsAPIService.shared) {
-        self.apiService = apiService
+    init(repository: NewsRepositoryProtocol = NewsRepository()) {
+        self.repository = repository
         loadSelectedSources()
     }
-    
-    func loadSources() async {
-        isLoading = true
-        errorMessage = nil
+
+    func loadSources(forceFetch: Bool = false) async {
+        state = .loading
         
         do {
-            sources = try await apiService.fetchSources()
+            let sources = try await repository.fetchSources(forceFetch: forceFetch)
+            if sources.isEmpty {
+                state = .empty
+            } else {
+                state = .loaded(sources)
+            }
         } catch {
-            errorMessage = "Failed to load sources: \(error.localizedDescription)"
+            state = .error(AppConstants.Strings.networkErrorSources)
         }
-        
-        isLoading = false
     }
     
     func toggleSource(_ sourceId: String) {
