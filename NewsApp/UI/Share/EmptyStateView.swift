@@ -14,6 +14,7 @@ struct EmptyStateView: View {
     
     var body: some View {
         VStack(spacing: AppConstants.Layout.largeSpacing) {
+            Spacer()
             Image(systemName: icon)
                 .font(.system(size: AppConstants.Layout.iconSize))
                 .foregroundColor(.gray)
@@ -24,6 +25,7 @@ struct EmptyStateView: View {
                 .foregroundColor(Theme.Colors.secondary)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, AppConstants.Layout.defaultPadding)
+            Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }

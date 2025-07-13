@@ -20,6 +20,7 @@ struct SourceRowView: View {
                 Text(source.description)
                     .font(Theme.Typography.caption)
                     .foregroundColor(Theme.Colors.secondary)
+                    .lineLimit(nil)
             }
             
             Spacer()

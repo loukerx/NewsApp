@@ -29,10 +29,12 @@ struct SavedArticleRowView: View {
                 VStack(alignment: .leading, spacing: AppConstants.Layout.smallSpacing) {
                     Text(savedArticle.title)
                         .font(Theme.Typography.headline)
+                        .lineLimit(nil)
                     
                     if let description = savedArticle.description {
                         Text(description)
                             .font(Theme.Typography.caption)
+                            .lineLimit(nil)
                             .foregroundColor(Theme.Colors.secondary)
                     }
                     

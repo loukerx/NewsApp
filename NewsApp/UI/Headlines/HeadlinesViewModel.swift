@@ -10,35 +10,53 @@ import Combine
 
 @MainActor
 class HeadlinesViewModel: ObservableObject {
-    @Published var articles: [Article] = []
-    @Published var isLoading = false
-    @Published var errorMessage: String?
-    
+    enum HeadlinesState {
+        case loading
+        case loaded([Article])
+        case empty
+        case error(String)
+    }
+
+    @Published var state: HeadlinesState = .loading
+    var selectedSources: Set<String> = []
+
     private let apiService: NewsAPIServiceProtocol
     private let storageManager = StorageManager.shared
     
     init(apiService: NewsAPIServiceProtocol = NewsAPIService.shared) {
         self.apiService = apiService
+        loadSelectedSources()
+    }
+    
+    private func loadSelectedSources() {
+        selectedSources = storageManager.loadSelectedSources()
+    }
+
+    func reloadHeadlines() async {
+        loadSelectedSources()
+        await loadHeadlines(for: selectedSources)
     }
     
     func loadHeadlines(for sources: Set<String>) async {
         guard !sources.isEmpty else {
-            articles = []
+            state = .empty
             return
         }
         
-        isLoading = true
-        errorMessage = nil
+        state = .loading
         
         do {
-            articles = try await apiService.fetchHeadlines(sources: Array(sources))
+            let articles = try await apiService.fetchHeadlines(sources: Array(sources))
+            if articles.isEmpty {
+                state = .empty
+            } else {
+                state = .loaded(articles)
+            }
         } catch {
-            errorMessage = "Failed to load headlines: \(error.localizedDescription)"
+            state = .error("Failed to load headlines: \(error.localizedDescription)")
         }
-        
-        isLoading = false
     }
-    
+
     func saveArticle(_ article: Article) {
         storageManager.saveArticle(article)
     }

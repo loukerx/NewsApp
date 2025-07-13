@@ -29,6 +29,7 @@ enum AppConstants {
         static let loadingHeadlines = "Loading headlines..."
         static let noArticlesAvailable = "No articles available"
         static let tryDifferentSources = "Try selecting different sources"
+        static let errorTitle = "Network Error"
         
         // Sources Tab
         static let sourcesTitle = "Sources"

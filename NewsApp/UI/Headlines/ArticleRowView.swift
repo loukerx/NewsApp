@@ -32,11 +32,13 @@ struct ArticleRowView: View {
             VStack(alignment: .leading, spacing: AppConstants.Layout.smallSpacing) {
                 Text(article.title)
                     .font(Theme.Typography.headline)
+                    .lineLimit(nil)
                     .foregroundColor(Theme.Colors.primary)
                 
                 if let description = article.description {
                     Text(description)
                         .font(Theme.Typography.caption)
+                        .lineLimit(nil)
                         .foregroundColor(Theme.Colors.secondary)
                 }
                 
