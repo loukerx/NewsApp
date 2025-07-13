@@ -10,8 +10,8 @@ NewsApp is a code challenge
 MVVM + SwiftUI + Combine
 
 ### SPM
-Kingfish for image cache
-GRDB for saved article cache(doesn't have enough time to do)
+- Kingfish for image cache
+- GRDB for saved article cache(doesn't have enough time to do)
 
 ### Persistence
 - FileSystem for API cache
