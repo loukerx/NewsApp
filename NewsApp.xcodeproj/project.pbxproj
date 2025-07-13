@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EFF6179D2E21F4C20089929F /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = EFF6179C2E21F4C20089929F /* GRDB */; };
+		EFF618202E23453A0089929F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EFF6181F2E23453A0089929F /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFF618202E23453A0089929F /* Kingfisher in Frameworks */,
 				EFF6179D2E21F4C20089929F /* GRDB in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -109,6 +111,7 @@
 				EFF617562E21F1710089929F /* NewsApp */,
 				EFF617642E21F1720089929F /* NewsAppTests */,
 				EFF6176E2E21F1720089929F /* NewsAppUITests */,
+				EFF6181E2E23453A0089929F /* Frameworks */,
 				EFF617552E21F1710089929F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -121,6 +124,13 @@
 				EFF6176B2E21F1720089929F /* NewsAppUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		EFF6181E2E23453A0089929F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,6 +155,7 @@
 			name = NewsApp;
 			packageProductDependencies = (
 				EFF6179C2E21F4C20089929F /* GRDB */,
+				EFF6181F2E23453A0089929F /* Kingfisher */,
 			);
 			productName = NewsApp;
 			productReference = EFF617542E21F1710089929F /* NewsApp.app */;
@@ -622,6 +633,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EFF6179B2E21F4C20089929F /* XCRemoteSwiftPackageReference "GRDB" */;
 			productName = GRDB;
+		};
+		EFF6181F2E23453A0089929F /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFF6179A2E21F4530089929F /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

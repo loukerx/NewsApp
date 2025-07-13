@@ -20,6 +20,18 @@ struct Article: Codable, Identifiable {
     var id: String { url }
 }
 
+extension Article {
+    var unwappedImageURL: URL? {
+        guard let urlString = urlToImage, let url = URL(string: urlString) else { return nil }
+        return url
+    }
+
+    var formattedAuthor: String? {
+        guard let author = author, !author.isEmpty else { return nil }
+        return "By \(author)"
+    }
+}
+
 struct ArticleSource: Codable {
     let id: String?
     let name: String

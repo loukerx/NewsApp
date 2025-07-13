@@ -17,6 +17,9 @@ struct LoadingView: View {
                 .font(Theme.Typography.subheadline)
                 .foregroundColor(Theme.Colors.secondary)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .frame(maxWidth: .infinity, minHeight: UIScreen.main.bounds.height * 0.6)
+        .listRowInsets(EdgeInsets())
+        .listRowBackground(Color.clear)
+        .listRowSeparator(.hidden)
     }
 }

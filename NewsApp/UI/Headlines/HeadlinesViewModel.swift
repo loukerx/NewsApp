@@ -18,6 +18,8 @@ class HeadlinesViewModel: ObservableObject {
     }
 
     @Published var state: HeadlinesState = .loading
+    // This variable need to be updated when user save/delete articles in Saved Tab
+    @Published var savedArticleIDs: Set<String> = []
     var selectedSources: Set<String> = []
 
     private let apiService: NewsAPIServiceProtocol
@@ -26,6 +28,7 @@ class HeadlinesViewModel: ObservableObject {
     init(apiService: NewsAPIServiceProtocol = NewsAPIService.shared) {
         self.apiService = apiService
         loadSelectedSources()
+        loadSavedArticleIds()
     }
     
     private func loadSelectedSources() {
@@ -57,11 +60,23 @@ class HeadlinesViewModel: ObservableObject {
         }
     }
 
-    func saveArticle(_ article: Article) {
-        storageManager.saveArticle(article)
+    func toggleSaveArticle(_ article: Article) {
+        if savedArticleIDs.contains(article.id) {
+            storageManager.removeArticle(withId: article.id)
+            savedArticleIDs.remove(article.id)
+        } else {
+            storageManager.saveArticle(article)
+            savedArticleIDs.insert(article.id)
+        }
+    }
+
+    func isArticleSaved(_ article: Article) -> Bool {
+        savedArticleIDs.contains(article.id)
     }
     
-    func isArticleSaved(_ article: Article) -> Bool {
-        storageManager.isArticleSaved(article.id)
+    func loadSavedArticleIds() {
+        let savedArticles = storageManager.loadSavedArticles()
+        savedArticleIDs = Set(savedArticles.map { $0.id })
     }
+
 }

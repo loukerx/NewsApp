@@ -5,6 +5,7 @@
 //  Created by Yin Hua on 12/7/2025.
 //
 
+import Kingfisher
 import SwiftUI
 
 struct SavedArticleRowView: View {
@@ -12,19 +13,18 @@ struct SavedArticleRowView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: AppConstants.Layout.smallPadding) {
-            HStack(spacing: AppConstants.Layout.defaultSpacing) {
-                AsyncImage(url: URL(string: savedArticle.urlToImage ?? "")) { image in
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: AppConstants.Layout.thumbnailSize, height: AppConstants.Layout.thumbnailSize)
-                        .clipped()
-                        .cornerRadius(AppConstants.Layout.cornerRadius)
-                } placeholder: {
-                    RoundedRectangle(cornerRadius: AppConstants.Layout.cornerRadius)
-                        .fill(Theme.Colors.placeholder)
-                        .frame(width: AppConstants.Layout.thumbnailSize, height: AppConstants.Layout.thumbnailSize)
-                }
+            HStack(alignment: .top, spacing: AppConstants.Layout.defaultSpacing) {
+                KFImage(savedArticle.unwappedImageURL)
+                    .placeholder {
+                        RoundedRectangle(cornerRadius: AppConstants.Layout.cornerRadius)
+                            .fill(Theme.Colors.placeholder)
+                            .frame(width: AppConstants.Layout.thumbnailSize, height: AppConstants.Layout.thumbnailSize)
+                    }
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: AppConstants.Layout.thumbnailSize, height: AppConstants.Layout.thumbnailSize)
+                    .clipped()
+                    .cornerRadius(AppConstants.Layout.cornerRadius)
                 
                 VStack(alignment: .leading, spacing: AppConstants.Layout.smallSpacing) {
                     Text(savedArticle.title)
@@ -39,7 +39,7 @@ struct SavedArticleRowView: View {
                     }
                     
                     HStack {
-                        if let author = savedArticle.author {
+                        if let author = savedArticle.formattedAuthor {
                             Text(author)
                                 .font(Theme.Typography.caption2)
                                 .foregroundColor(Theme.Colors.secondary)
