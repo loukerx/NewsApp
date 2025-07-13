@@ -45,24 +45,12 @@
 		EFF617542E21F1710089929F /* NewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFF617612E21F1720089929F /* NewsAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewsAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFF6176B2E21F1720089929F /* NewsAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewsAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFF618282E23CC970089929F /* NewsApp.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = NewsApp.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		EFF617F32E2234400089929F /* Exceptions for "NewsApp" folder in "NewsAppTests" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Networking/MockNewsAPIService.swift,
-			);
-			target = EFF617602E21F1720089929F /* NewsAppTests */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		EFF617562E21F1710089929F /* NewsApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				EFF617F32E2234400089929F /* Exceptions for "NewsApp" folder in "NewsAppTests" target */,
-			);
 			path = NewsApp;
 			sourceTree = "<group>";
 		};
@@ -108,6 +96,7 @@
 		EFF6174B2E21F1700089929F = {
 			isa = PBXGroup;
 			children = (
+				EFF618282E23CC970089929F /* NewsApp.xctestplan */,
 				EFF617562E21F1710089929F /* NewsApp */,
 				EFF617642E21F1720089929F /* NewsAppTests */,
 				EFF6176E2E21F1720089929F /* NewsAppUITests */,

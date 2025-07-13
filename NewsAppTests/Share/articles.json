@@ -1,0 +1,45 @@
+{
+    "status": "ok",
+    "totalResults": 3,
+    "articles": [
+        {
+            "source": {
+                "id": "bbc-news",
+                "name": "BBC News"
+            },
+            "author": "BBC News",
+            "title": "Donald Trump and the Scots: A not-so special relationship",
+            "description": "Past visits suggest the US president's latest trip to his mother's homeland is unlikely to receive a warm welcome.",
+            "url": "https://www.bbc.co.uk/news/articles/c78nv0y89p6o",
+            "urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/e9ca/live/bdd80f30-5d6c-11f0-a40e-a1af2950b220.jpg",
+            "publishedAt": "2025-07-12T13:07:21.4100777Z",
+            "content": "Trump was made a business ambassador by Jack McConnell in 2006 and awarded an honorary degree by Aberdeen's Robert Gordon University four years later.\r\nAll of these can be easily justified by the nee… [+1440 chars]"
+        },
+        {
+            "source": {
+                "id": "bbc-news",
+                "name": "BBC News"
+            },
+            "author": "BBC News",
+            "title": "German backpacker found after 11 nights in Australia's outback",
+            "description": "Carolina Wilga, 26, survived by drinking from puddles and sleeping in a cave, police said.",
+            "url": "https://www.bbc.co.uk/news/articles/c17w87pv5ljo",
+            "urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/7e1e/live/b300c0f0-5f0d-11f0-b5c5-012c5796682d.jpg",
+            "publishedAt": "2025-07-12T12:37:22.1890486Z",
+            "content": "\"She spent 11 nights exposed to the elements and survived by consuming the minimal food supplies she had in her possession, and drinking water from rain and puddles,\" a Western Australia police state… [+940 chars]"
+        },
+        {
+            "source": {
+                "id": "bbc-news",
+                "name": "BBC News"
+            },
+            "author": "BBC News",
+            "title": "Harmony Summit: Inside King Charles's fiery gathering that shone a light on his beliefs",
+            "description": "The King's philosophy of harmony with nature was on display at the Highgrove summit.",
+            "url": "https://www.bbc.co.uk/news/articles/c0l4jppyjzjo",
+            "urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/f13d/live/a16dddb0-5dae-11f0-a40e-a1af2950b220.jpg",
+            "publishedAt": "2025-07-12T11:37:22.0184157Z",
+            "content": "Highgrove itself has an example of the King's private sense of spirituality. There is a small sanctuary tucked away in the grounds, where no one else goes inside, where he can spend time completely a… [+2016 chars]"
+        }
+    ]
+}

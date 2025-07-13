@@ -36,7 +36,7 @@ class StorageManager {
             saveSavedArticles(savedArticles)
         }
     }
-    
+
     func removeArticle(withId id: String) {
         var savedArticles = loadSavedArticles()
         savedArticles.removeAll { $0.id == id }
@@ -55,7 +55,7 @@ class StorageManager {
         let savedArticles = loadSavedArticles()
         return savedArticles.contains { $0.id == articleId }
     }
-    
+
     private func saveSavedArticles(_ articles: [SavedArticle]) {
         if let data = try? JSONEncoder().encode(articles) {
             UserDefaults.standard.set(data, forKey: savedArticlesKey)
